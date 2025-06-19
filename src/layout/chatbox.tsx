@@ -1,19 +1,32 @@
 import Profile from "@/components/chatbox/profile";
 import Input from "@/components/chatbox/input";
-import react from "react";
+import React from "react";
 
+// ChatBox is a layout wrapper for the chat UI
+// It contains a header (Profile), scrollable chat content, and a fixed input area
 function ChatBox({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-max-2/3 w-max-2/3 flex flex-col border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+    // Container with fixed width and height, vertical layout, rounded border
+    <div className="w-[400px] h-[600px] flex flex-col border border-gray-300 rounded-lg overflow-hidden shadow-sm bg-white">
+      
+      {/* Header section (e.g., user info or chat title) */}
       <div>
-       <Profile info={null}/>
+        <Profile info={null} />
       </div>
-      <div className="h-full w-full">{children}</div>
+
+      {/* Main chat content area that scrolls as messages fill the space */}
+      <div className="flex-1 overflow-y-auto">
+        {children}
+      </div>
+
+      {/* Fixed input area at the bottom of the chat box */}
       <div>
-        <Input/>
+        <Input />
       </div>
     </div>
   );
 }
 
 export default ChatBox;
+
+
